@@ -1,0 +1,30 @@
+<%- include('./partials/head.ejs') %>
+<style>
+    .create-blog{
+        width: 50%;
+        margin: auto;
+    }
+    input, label, textarea{
+        width: 100%;
+    }
+  
+</style>
+<body>
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="create-blog content">
+        <form action="">
+            <label for="title">Blog title: 
+                <input type="text" name="blog_title" id="blog-title">
+            </label>
+            <label for="snippet">Blog snippet: 
+                <input type="text" name="blog_snippet" id="blog-snippet">
+            </label>
+            </label>Blog body:<label for="body">
+            <textarea name="blog_body" id="blog-body" cols="30" rows="10" required></textarea>
+            <input type="submit" value="Create Blog">
+        </form>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
