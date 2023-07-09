@@ -1,5 +1,5 @@
 const express = require('express')
-class Settings{
+class Environment{
     constructor(expressApp){
         this.app = expressApp
     }
@@ -16,4 +16,4 @@ class Settings{
     }
 }
 
-module.exports = Settings
+module.exports = Environment

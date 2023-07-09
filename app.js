@@ -1,14 +1,14 @@
 const HttpResponse = require('./utils/httpResponse')
 const Middlewear = require('./utils/middlewear')
 const Server = require('./utils/server')
-const Settings = require('./utils/settings')
+const Environment = require('./utils/environment')
 const express = require('express')
 
 const app = express()
 
 const middlewear =  new Middlewear(app)
 const response = new HttpResponse(app)
-const settings = new Settings(app)
+const env = new Environment(app)
 const server = new Server(app)
 
 const port = process.env.PORT || 3000
@@ -29,9 +29,9 @@ const blogs = [
 
 server.listen(port)
 
-settings.setViewEngine('ejs')
-settings.setViewsDirectory('templates')
-settings.setStaticDir('./static')
+env.setViewEngine('ejs')
+env.setViewsDirectory('templates')
+env.setStaticDir('./static')
 
 middlewear.logRequest('tiny')
 
