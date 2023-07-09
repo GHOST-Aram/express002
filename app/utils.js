@@ -1,3 +1,4 @@
+const Blog = require('../models/blog')
 const DataStore = require('../db/datastore')
 const Environment = require('./utils/environment')
 const express = require('express')
@@ -13,4 +14,4 @@ const db = new DataStore(mongoose)
 const middlewear =  new Middlewear(app)
 const response = new HttpResponse(app)
 
-module.exports = {env, server,db, middlewear,response}
+module.exports = {Blog, env, server,db, middlewear,response}
