@@ -1,9 +1,11 @@
+const HttpResponse = require('./httpResponse')
 const Middlewear = require('./middlewear')
 const Server = require('./server')
 const express = require('express')
 const app = express()
 
 const middlewear =  new Middlewear(app)
+const response = new HttpResponse(app)
 const server = new Server(app)
 const port = process.env.PORT || 3000
 const blogs = [
@@ -24,10 +26,10 @@ const blogs = [
 server.listen(port)
 server.setViewEngine('ejs')
 server.setViewsDirectory('templates')
-middlewear.logRequest()
+middlewear.logRequest('tiny')
 
-server.render('/','index', { title: 'Home', blogs } )
-server.render('/about', 'about', { title: 'About Us' })
-server.redirect('/about-us', '/about')
-server.render('/blogs/create', 'create-blog', {title: 'Create Blog'})
-server.render404('404', { title: 'Page Not Found' })
+response.render('/','index', { title: 'Home', blogs } )
+response.render('/about', 'about', { title: 'About Us' })
+response.redirect('/about-us', '/about')
+response.render('/blogs/create', 'create-blog', {title: 'Create Blog'})
+response.render404('404', { title: 'Page Not Found' })

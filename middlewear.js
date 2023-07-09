@@ -4,7 +4,7 @@ class Middlewear{
     constructor(app){
         this.app = app
     }
-    logRequest = () =>{
+    log = () =>{
         this.app.use((request, response, next) =>{
             console.log('New Request Made: ')
             console.log('Url: ', request.url)
@@ -13,6 +13,9 @@ class Middlewear{
             console.log('Path: ', request.path)
             next()
         })
+    }
+    logRequest = (option) =>{
+        this.app.use(morgan(option))
     }
     
 }
