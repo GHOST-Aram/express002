@@ -3,11 +3,13 @@ class DataStore{
         this.dbAbstractor = dbAbstractor
     }
 
-    connect = (dbURI) =>{
+    connect = (dbURI, callback) =>{
         this.dbAbstractor.connect(
             dbURI, { useNewUrlParser: true, useUnifiedTopology: true }
-        ).then((result) =>console.log('Woo!, Connected to DB:'))
-        .catch((error) => console.log(error))
+        ).then((result) =>() =>{
+            callback()
+            console.log('Woo!, Connected to DB:')
+        }).catch((error) => console.log(error))
     }
 }
 module.exports = DataStore

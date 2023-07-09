@@ -1,16 +1,13 @@
 const blogs = require('./fakeDb')
 const dbURI = require('./dbCredentials')
-const {env, server,db, middlewear,response} = require('./app/utils')
+const { env, server, db, middlewear, response } = require('./app/utils')
 
 env.setViewsDirectory('templates')
 env.setViewEngine('ejs')
 env.setStaticDir('./static')
 
 const port = env.getPort()
-server.listen(port)
-
-
-db.connect(dbURI)
+db.connect(dbURI, server.listen(port))
 
 middlewear.logRequest('tiny')
 
