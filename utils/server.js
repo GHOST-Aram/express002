@@ -7,14 +7,7 @@ class Server{
             ()=> console.log(`Server running at: http://localhost:${port}`)
         )
     }
-
-    setViewEngine = (viewEngine) =>{
-        this.app.set('view engine', viewEngine)
-    }
-
-    setViewsDirectory = (dirname) =>{
-        this.app.set('views', dirname)
-    }
+   
 
 }
 
