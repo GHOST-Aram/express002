@@ -1,7 +1,9 @@
+const Middlewear = require('./middlewear')
 const Server = require('./server')
 const express = require('express')
 const app = express()
 
+const middlewear =  new Middlewear(app)
 const server = new Server(app)
 const port = process.env.PORT || 3000
 const blogs = [
@@ -22,7 +24,7 @@ const blogs = [
 server.listen(port)
 server.setViewEngine('ejs')
 server.setViewsDirectory('templates')
-server.logRequest()
+middlewear.logRequest()
 
 server.render('/','index', { title: 'Home', blogs } )
 server.render('/about', 'about', { title: 'About Us' })

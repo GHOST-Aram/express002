@@ -9,16 +9,7 @@ class Server{
             ()=> console.log(`Server running at: http://localhost:${port}`)
         )
     }
-    logRequest = () =>{
-        this.app.use((request, response, next) =>{
-            console.log('New Request Made: ')
-            console.log('Url: ', request.url)
-            console.log('Method: ', request.method)
-            console.log('host: ', request.hostname)
-            console.log('Path: ', request.path)
-            next()
-        })
-    }
+    
     redirect = (url, to) =>{
         this.app.get(url, (request, response) =>{
             response.redirect(to)
