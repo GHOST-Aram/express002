@@ -1,6 +1,6 @@
-const HttpResponse = require('./httpResponse')
-const Middlewear = require('./middlewear')
-const Server = require('./server')
+const HttpResponse = require('./utils/httpResponse')
+const Middlewear = require('./utils/middlewear')
+const Server = require('./utils/server')
 const express = require('express')
 const app = express()
 
