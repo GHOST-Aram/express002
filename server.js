@@ -10,12 +10,13 @@ class Server{
         )
     }
     logRequest = () =>{
-        this.app.use((request, response) =>{
+        this.app.use((request, response, next) =>{
             console.log('New Request Made: ')
             console.log('Url: ', request.url)
             console.log('Method: ', request.method)
             console.log('host: ', request.hostname)
             console.log('Path: ', request.path)
+            next()
         })
     }
     redirect = (url, to) =>{
