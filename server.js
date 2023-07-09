@@ -1,3 +1,5 @@
+const { response } = require("express")
+
 class Server{ 
     constructor(expressApp){
         this.app = expressApp
@@ -7,18 +9,26 @@ class Server{
             ()=> console.log(`Server running at: http://localhost:${port}`)
         )
     }
-    
+    logRequest = () =>{
+        this.app.use((request, response) =>{
+            console.log('New Request Made: ')
+            console.log('Url: ', request.url)
+            console.log('Method: ', request.method)
+            console.log('host: ', request.hostname)
+            console.log('Path: ', request.path)
+        })
+    }
+    redirect = (url, to) =>{
+        this.app.get(url, (request, response) =>{
+            response.redirect(to)
+        })
+    }
     render = (url, filename, context) =>{
         this.app.get(url, (request, response) =>{
             response.render(filename, context)
         })
     }
 
-    render404 = (filename) =>{
-        this.app.use((request, response) => {
-            response.status(404).render(filename)
-        })
-    }
     setViewEngine = (viewEngine) =>{
         this.app.set('view engine', viewEngine)
     }
