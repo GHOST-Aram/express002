@@ -4,12 +4,13 @@ const Server = require('./utils/server')
 const Settings = require('./utils/settings')
 const express = require('express')
 
+const app = express()
+
 const middlewear =  new Middlewear(app)
 const response = new HttpResponse(app)
 const settings = new Settings(app)
 const server = new Server(app)
 
-const app = express()
 const port = process.env.PORT || 3000
 const blogs = [
     {
