@@ -47,3 +47,10 @@ input[type=submit]{
     border: none;
     font-weight: bold;
 }
+.create-blog{
+    width: 50%;
+    margin: auto;
+}
+input, label, textarea{
+    width: 100%;
+}
