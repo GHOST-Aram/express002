@@ -29,7 +29,11 @@ class Server{
             response.render(filename, context)
         })
     }
-
+    render404 = (filename, context) =>{
+        this.app.use((request, response) => {
+            response.status(404).render(filename, context)
+        })
+    }
     setViewEngine = (viewEngine) =>{
         this.app.set('view engine', viewEngine)
     }

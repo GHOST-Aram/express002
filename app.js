@@ -20,13 +20,12 @@ const blogs = [
 ]
 
 server.listen(port)
-server.logRequest()
 server.setViewEngine('ejs')
 server.setViewsDirectory('templates')
+server.logRequest()
+
 server.render('/','index', { title: 'Home', blogs } )
 server.render('/about', 'about', { title: 'About Us' })
 server.redirect('/about-us', '/about')
 server.render('/blogs/create', 'create-blog', {title: 'Create Blog'})
-app.use((request, response) => {
-    response.status(404).render('404', { title: 'Page Not Found' })
-})
+server.render404('404', { title: 'Page Not Found' })
