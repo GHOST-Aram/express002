@@ -18,7 +18,7 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/blogs', (req, res) =>{
-   Blog.find().sort({ createdAt: -1 }).then((result) =>{
+   Blog.find().then((result) =>{
        res.render('index', {title: 'Blogs', blogs: result})
    }).catch((error) => console.error(error))
 })
@@ -27,12 +27,20 @@ app.get('/create-blog', (req, res) =>{
     res.render('create-blog', { title: 'Create Blog'})
 })
 
+app.delete('/blogs/:id', (req, res) =>{
+    const id = req.params.id
+    Blog.findByIdAndDelete(id).then(result =>{
+        res.json({redirect: '/blogs'})
+    }).catch(error=> console.error(error))
+})
+
 app.get('/blogs/:id', (req, res) =>{
     const id = req.params.id
     Blog.findById(id).then((blog) =>{
         res.render('details', {blog, title: 'Blog Details'})
     }).catch((error) => console.error(error))
 })
+
 
 app.post('/blogs', (req, res) =>{
    const blog = new Blog(req.body)

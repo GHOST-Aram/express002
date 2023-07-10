@@ -54,10 +54,26 @@
         <div class="content">
             <p><%= blog.body %></p>
         </div>
-        <a href="" class="delete" data-doc="<%= blog._id%>">
+        <a class="delete" data-doc="<%= blog._id%>">
             <button>Delete</button>
         </a>
     </div>
     <%- include('./partials/footer.ejs') %>
+    <script>
+        const trashcan = document.querySelector('a.delete')
+        trashcan.addEventListener('click', (event) =>{
+            const endpoint = `/blogs/${trashcan.dataset.doc}`
+            fetch(endpoint,
+                {
+                    method: 'DELETE', 
+                    headers: {'Content-Type': 'application/json'},
+                    body: null
+                }
+            )
+            .then((response)=>response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch((error)=> console.error(error))
+        }) 
+    </script>
 </body>
 </html>
