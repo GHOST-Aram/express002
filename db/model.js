@@ -1,8 +1,5 @@
 const mongoose = require('mongoose')
 
-const model = (identifier, schema) =>{
-    return mongoose.model(identifier, schema)
-}
 class ModelSchema extends mongoose.Schema{
     constructor(definition, options){
         super(definition, options)
@@ -10,7 +7,8 @@ class ModelSchema extends mongoose.Schema{
 }
 class Model {
     constructor(identifier, schema){
-        return mongoose.model(identifier, schema)
+        this.model = mongoose.model(identifier, schema)
+        return this.model
     }
 }
 module.exports = {Model, ModelSchema}

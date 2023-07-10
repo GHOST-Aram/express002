@@ -1,8 +1,12 @@
 const morgan = require('morgan')
+const express = require('express')
 
 class Middlewear{
     constructor(app){
         this.app = app
+    }
+    encodeUrl = (options) =>{
+        this.app.use(express.urlencoded(options))
     }
     log = () =>{
         this.app.use((request, response, next) =>{

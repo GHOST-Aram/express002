@@ -14,4 +14,4 @@ const db = new DataStore(mongoose)
 const middlewear =  new Middlewear(app)
 const response = new HttpResponse(app)
 
-module.exports = {Blog, env, server,db, middlewear,response}
+module.exports = {app, Blog, env, server,db, middlewear,response}

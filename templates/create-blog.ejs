@@ -1,17 +1,79 @@
 <%- include('./partials/head.ejs') %>
+<style>
+    .create-blog form{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+        gap: 1rem;
+        margin-block-end: 1rem;
+    }
+    input{
+        padding-block: .5rem;
+        border: solid 1px gray;
+        font-size: 1.2rem; 
+    }
+    *:focus{
+        outline: dotted 2px green;
+    }
+    input[type=submit]{
+        padding-inline: 1rem;
+        background: rgb(42, 181, 42);
+        color: wheat;
+        border: none;
+        font-weight: bold;
+    }
+    .create-blog{
+        width: 50%;
+        margin: auto;
+    }
+    textarea, input[type=text]{
+        background: transparent;
+    }
+    input, label, textarea{
+        width: 100%;
+    }
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+        padding-block: 0;
+    }
+    body{
+        background-color: rgb(207, 205, 205);
+        padding-inline: 10%;
+    }
+    a{
+        font-weight: bold;
+        color: rgb(62, 54, 54);
+    
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        border-bottom: solid gray 2px;
+        padding-block: 0;
+        margin-block-end: 2rem;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }  
+</style>
 <body>
     <%- include('./partials/nav.ejs') %>
 
     <div class="create-blog content">
-        <form action="">
+        <form action="/blogs" method="POST">
             <label for="title">Blog title: 
-                <input type="text" name="blog_title" id="blog-title">
+                <input type="text" name="title" id="blog-title">
             </label>
             <label for="snippet">Blog snippet: 
-                <input type="text" name="blog_snippet" id="blog-snippet">
+                <input type="text" name="snippet" id="blog-snippet">
             </label>
             </label>Blog body:<label for="body">
-            <textarea name="blog_body" id="blog-body" cols="30" rows="10" required></textarea>
+            <textarea name="body" id="blog-body" cols="30" rows="10" required></textarea>
             <input type="submit" value="Create Blog">
         </form>
     </div>
