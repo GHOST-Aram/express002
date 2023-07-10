@@ -6,10 +6,15 @@ body{
     background-color: rgb(207, 205, 205);
     padding-inline: 10%;
 }
-a{
+nav a{
     font-weight: bold;
     color: rgb(62, 54, 54);
 
+}
+.blogs a{
+    text-decoration: none;
+    font-weight: normal;
+    color: black;
 }
 nav{
     display: flex;
