@@ -1,4 +1,51 @@
 <% -include('./partials/head.ejs') %>
+<style>
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+        padding-block: 0;
+    }
+    body{
+        background-color: rgb(207, 205, 205);
+        padding-inline: 10%;
+    }
+    nav a{
+        font-weight: bold;
+        color: rgb(62, 54, 54);
+    
+    }
+    .blogs a{
+        text-decoration: none;
+        font-weight: normal;
+        color: black;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        border-bottom: solid gray 2px;
+        padding-block: 0;
+        margin-block-end: 2rem;
+    }
+    *:focus{
+        outline: dotted 2px green;
+    }
+    button{
+        background-color: red;
+        color: white;
+        font: bold; 
+        font-size: 1.5rem;
+        border: none;
+        padding-inline: 1rem;
+        padding-block: .5rem;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+    
+</style>
 <body>
     <%-include('./partials/nav.ejs') %>
 
@@ -8,7 +55,7 @@
             <p><%= blog.body %></p>
         </div>
         <a href="" class="delete" data-doc="<%= blog._id%>">
-            <button>delete</button>
+            <button>Delete</button>
         </a>
     </div>
     <%- include('./partials/footer.ejs') %>

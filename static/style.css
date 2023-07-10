@@ -24,12 +24,20 @@ nav{
     padding-block: 0;
     margin-block-end: 2rem;
 }
+*:focus{
+    outline: dotted 2px green;
+}
+button{
+    background-color: red;
+    color: white;
+    font: bold; 
+    padding-inline: 1rem;
+    padding-block: .5rem;
+}
 ul{
     list-style: none;
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
 }
-*:focus{
-    outline: dotted 2px green;
-}
+
