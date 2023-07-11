@@ -11,9 +11,16 @@ const blog_delete =  (req, res) =>{
 
 const blog_details = (req, res) =>{
     const id = req.params.id
-    Blog.findById(id).then((blog) =>{
-        res.render('blog/details', {blog, title: 'Blog Details'})
-    }).catch((error) => console.error(error))
+    Blog.findById(id).then(
+        blog =>{
+            res.render('blog/details', {blog, title: 'Blog Details'})
+            console.log(blog)
+        }
+    ).catch(
+        error => {
+            res.status(404).render('404', { title: 'Page Not Found' })
+            console.error(error)
+    })   
 }
 
 const blog_index =  (req, res) =>{
