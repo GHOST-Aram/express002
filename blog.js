@@ -1,5 +1,11 @@
 const dbURI = require('./dbCredentials')
-const { app, Blog, env, server, db, middlewear, response} = require('./app/utils')
+const utils = require('./app/utils')
+const  blogsRouter = require('./routes/blog-routes')
+const app = utils.app
+const env = utils.env
+const server = utils.server
+const db = utils.db
+const middlewear = utils.middlewear
 
 env.setViewsDirectory('templates')
 env.setViewEngine('ejs')
@@ -17,38 +23,11 @@ app.get('/', (req, res) =>{
     res.redirect('/blogs')
 })
 
-app.get('/blogs', (req, res) =>{
-   Blog.find().then((result) =>{
-       res.render('index', {title: 'Blogs', blogs: result})
-   }).catch((error) => console.error(error))
-})
+app.use('/blogs', blogsRouter)
 
-app.get('/create-blog', (req, res) =>{
+app.get('/create', (req, res) =>{
     res.render('create-blog', { title: 'Create Blog'})
 })
-
-app.delete('/blogs/:id', (req, res) =>{
-    const id = req.params.id
-    Blog.findByIdAndDelete(id).then(result =>{
-        res.json({redirect: '/blogs'})
-    }).catch(error=> console.error(error))
-})
-
-app.get('/blogs/:id', (req, res) =>{
-    const id = req.params.id
-    Blog.findById(id).then((blog) =>{
-        res.render('details', {blog, title: 'Blog Details'})
-    }).catch((error) => console.error(error))
-})
-
-
-app.post('/blogs', (req, res) =>{
-   const blog = new Blog(req.body)
-    blog.save().then((result) =>{
-        res.redirect('/')
-    })
-})
-
 app.get('/about', (req, res) =>{
     res.render('about', { title: 'About Us'})
 })
