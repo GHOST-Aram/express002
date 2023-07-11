@@ -36,7 +36,7 @@ app.get('/about-us', (req, res) =>{
     res.redirect('/about')
 })
 
-app.use((req, res) =>{
+app.get('*', (req, res) =>{
     res.status(404).render('404', {title: 'Page Not Found'})
 })
 
