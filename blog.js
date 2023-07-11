@@ -26,7 +26,7 @@ app.get('/', (req, res) =>{
 app.use('/blogs', blogsRouter)
 
 app.get('/create', (req, res) =>{
-    res.render('create-blog', { title: 'Create Blog'})
+    res.render('blog/create-blog', { title: 'Create Blog'})
 })
 app.get('/about', (req, res) =>{
     res.render('about', { title: 'About Us'})

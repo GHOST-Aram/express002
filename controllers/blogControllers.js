@@ -12,13 +12,13 @@ const blog_delete =  (req, res) =>{
 const blog_details = (req, res) =>{
     const id = req.params.id
     Blog.findById(id).then((blog) =>{
-        res.render('details', {blog, title: 'Blog Details'})
+        res.render('blog/details', {blog, title: 'Blog Details'})
     }).catch((error) => console.error(error))
 }
 
 const blog_index =  (req, res) =>{
     Blog.find().then((result) =>{
-        res.render('index', {title: 'Blogs', blogs: result})
+        res.render('blog/index', {title: 'Blogs', blogs: result})
     }).catch((error) => console.error(error))
 }
 
